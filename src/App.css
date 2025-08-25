@@ -1,0 +1,174 @@
+/* 🌸 Overall Page Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0); /* Soft pinkish gradient */
+  min-height: 100vh;
+  color: #333;
+}
+
+/* 🌸 Main Container */
+.main-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🌸 Form Section */
+.form-section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(255, 105, 180, 0.25);
+  width: 400px;
+  text-align: center;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.form-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(255, 105, 180, 0.35);
+}
+
+.form-section h2 {
+  color: #ff4081;
+  font-weight: bold;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* 🌸 Form Inputs */
+.form-control {
+  background: #fff !important;
+  border: 1.5px solid #ffc1e3;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  width: 100%;
+  margin-bottom: 12px;
+  transition: 0.3s;
+}
+
+.form-control:focus {
+  border-color: #ff80ab;
+  box-shadow: 0 0 10px rgba(255, 128, 171, 0.3);
+  outline: none;
+}
+
+/* 🌸 Buttons */
+.btn-custom {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #ff80ab, #ff4081);
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(255, 128, 171, 0.3);
+}
+
+.btn-custom:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff4081, #ff80ab);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.4);
+}
+
+/* 🌸 Products Container - CENTERED */
+.products-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  justify-items: center; /* Center the cards */
+  width: 100%;
+}
+
+/* 🌸 Product Cards */
+.custom-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.2);
+  color: #333;
+  transition: all 0.3s ease;
+  border: none;
+  max-width: 300px;
+  text-align: center;
+}
+
+.custom-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 35px rgba(255, 64, 129, 0.3);
+}
+
+/* 🌸 Product Images */
+.custom-card img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* 🌸 Card Titles */
+.custom-card .card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ff4081;
+  margin-top: 10px;
+}
+
+/* 🌸 Card Description */
+.custom-card .card-text {
+  font-size: 0.95rem;
+  color: #666;
+  padding: 0 10px;
+  min-height: 60px;
+}
+
+/* 🌸 Card Buttons */
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 10px 20px;
+}
+
+.card-buttons .btn {
+  flex: 1;
+  margin: 0 5px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+/* 🌸 Button Colors */
+.card-buttons .btn-success {
+  background-color: #66bb6a;
+  border: none;
+}
+.card-buttons .btn-success:hover {
+  background-color: #43a047;
+}
+
+.card-buttons .btn-danger {
+  background-color: #ef5350;
+  border: none;
+}
+.card-buttons .btn-danger:hover {
+  background-color: #e53935;
+}
+
+.card-buttons .btn-primary {
+  background-color: #42a5f5;
+  border: none;
+}
+.card-buttons .btn-primary:hover {
+  background-color: #1e88e5;
+}
