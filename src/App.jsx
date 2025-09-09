@@ -1,69 +1,76 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import axios from 'axios'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import Form from 'react-bootstrap/Form'
+import { useEffect, useState } from 'react';
+import './App.css';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 
 function App() {
-  const [products, setProducts] = useState([])
-  const [name, setName] = useState("")
-  const [desc, setDesc] = useState("")
-  const [imageUrl, setImageUrl] = useState("")
-  const [price, setPrice] = useState("")
-  const [productIdOfUpdate, setProductIdOfUpdate] = useState(0)
+  const [products, setProducts] = useState([]);
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [price, setPrice] = useState("");
+  const [productIdOfUpdate, setProductIdOfUpdate] = useState(0);
 
+  // Your live backend URL
+  const BASE_URL = "https://backen-server-with-db-production.up.railway.app";
+
+  // Fetch all products from backend
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("https://backen-server-with-db-production.up.railway.app/products")
-        setProducts(res.data)
+        const res = await axios.get(`${BASE_URL}/products`);
+        setProducts(res.data);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    }
-    fetchProducts()
-  }, [])
+    };
+    fetchProducts();
+  }, []);
 
+  // Add new product
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const newProduct = {
         id: products.length + 1,
         name,
         desc,
         imageUrl,
-        price: parseFloat(price)
-      }
-      await axios.post("https://backen-server-with-db-production.up.railway.app/products", newProduct)
-      setProducts([...products, newProduct])
-      alert("Product Added Successfully!")
+        price: parseFloat(price),
+      };
+      await axios.post(`${BASE_URL}/products`, newProduct);
+      setProducts([...products, newProduct]);
+      alert("Product Added Successfully!");
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
+  // Update product
   const handleUpdate = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const updatedData = { name, desc, imageUrl, price }
-      await axios.put(`http://localhost:5050/products/${productIdOfUpdate}`, updatedData)
-      alert("Product Updated Successfully!")
+      const updatedData = { name, desc, imageUrl, price };
+      await axios.put(`${BASE_URL}/products/${productIdOfUpdate}`, updatedData);
+      alert("Product Updated Successfully!");
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
+  // Delete product
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:5050/products/${id}`)
-      setProducts(products.filter((pr) => pr.id !== id))
-      alert("Product Removed!")
+      await axios.delete(`${BASE_URL}/products/${id}`);
+      setProducts(products.filter((pr) => pr.id !== id));
+      alert("Product Removed!");
     } catch (err) {
-      alert("Something went wrong")
-      console.log(err)
+      alert("Something went wrong");
+      console.log(err);
     }
-  }
+  };
 
   return (
     <div className="main-container">
@@ -129,14 +136,13 @@ function App() {
               <div className="card-buttons">
                 <Button variant="success" onClick={() => setProductIdOfUpdate(pr.id)}>Edit</Button>
                 <Button variant="danger" onClick={() => deleteProduct(pr.id)}>Delete</Button>
-                {/* <Button variant="primary">Add to Cart</Button> */}
               </div>
             </Card.Body>
           </Card>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
