@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:5050/products")
+        const res = await axios.get("https://backen-server-with-db-production.up.railway.app//products")
         setProducts(res.data)
       } catch (err) {
         console.log(err)
@@ -35,7 +35,7 @@ function App() {
         imageUrl,
         price: parseFloat(price)
       }
-      await axios.post("http://localhost:5050/products", newProduct)
+      await axios.post("https://backen-server-with-db-production.up.railway.app//products", newProduct)
       setProducts([...products, newProduct])
       alert("Product Added Successfully!")
     } catch (err) {
